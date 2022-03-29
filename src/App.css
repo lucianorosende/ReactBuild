@@ -11285,4 +11285,8 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+  .remStyle{
+    top: 0.5rem;
+    right: 0.5rem;
+  }
 }
