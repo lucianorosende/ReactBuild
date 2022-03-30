@@ -1,5 +1,5 @@
 import NavBar from './components/navBar';
-import Items from "./components/items";
+import Items from "./components/itemListContainer";
 import Foot from "./components/footer";
 
 function App() {
