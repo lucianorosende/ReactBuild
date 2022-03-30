@@ -1,11 +1,13 @@
-import NavBar from './components/NavBar/navBar';
-import Items from "./components/NavBar/items";
+import NavBar from './components/navBar';
+import Items from "./components/items";
+import Foot from "./components/footer";
 
 function App() {
   return (
     <>
     <NavBar/>
-    <Items/>
+    <Items greeting="Productos"/>
+    <Foot/>
     </>
   )
     

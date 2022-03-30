@@ -84,9 +84,9 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-image: url(https://images8.alphacoders.com/981/981684.jpg);
 }
 
 hr {
@@ -11289,4 +11289,6 @@ textarea.form-control-lg {
     top: 0.5rem;
     right: 0.5rem;
   }
+  
+ 
 }
