@@ -1,4 +1,16 @@
+import Counter from "./itemCount"
+
 let items = (props) => {
+
+    const addHandler = (quant) => {
+
+        if(quant === 0){
+          console.log(`no es posible agregar ${quant} items al carrito`)
+        }
+        else{console.log(`se agregaron ${quant} items al carrito`)} 
+        
+        
+      }
 
     return (
     <>
@@ -203,8 +215,10 @@ let items = (props) => {
                             </div>                        
                         </div>
                     </div>
-                    
+
+                    <Counter initial={0} stock={5} onAdd={addHandler}/>
                 </section>
+                
     </>            
     )
 

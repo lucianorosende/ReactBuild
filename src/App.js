@@ -3,6 +3,7 @@ import Items from "./components/itemListContainer";
 import Foot from "./components/footer";
 
 function App() {
+
   return (
     <>
     <NavBar/>
