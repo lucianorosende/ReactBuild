@@ -1,5 +1,5 @@
 import NavBar from './components/navBar';
-import Items from "./components/itemListContainer";
+import ItemListContainer from "./components/itemListContainer";
 import Foot from "./components/footer";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
     <NavBar/>
-    <Items greeting="Productos"/>
+    <ItemListContainer greeting="Productos"/>
     <Foot/>
     </>
   )

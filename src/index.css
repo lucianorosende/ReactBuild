@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.imgSect{
+  background-image: url(https://images8.alphacoders.com/981/981684.jpg);
+}

@@ -29,8 +29,10 @@ const Items = () => {
 
     return (
     <>
+        <section className="py-5 imgSect">
         <ItemList products={products}/>
-        <Counter initial={0} stock={5} onAdd={addHandler}/>        
+        <Counter initial={0} stock={5} onAdd={addHandler}/>
+        </section>         
     </>            
     )
 
