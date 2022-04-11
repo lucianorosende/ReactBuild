@@ -8,7 +8,7 @@ const Item = ({id, title, description, price, imgUrl}) => {
                             <div className="col mb-5">
                                 <div className="card h-100">
                                     
-                                    <img className="card-img-top" src={imgUrl} alt="..." />
+                                    <img className="card-img-top" src={imgUrl} alt={id} />
                                     
                                     <div className="card-body p-4">
                                         <div className="text-center">
