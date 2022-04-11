@@ -1,13 +1,17 @@
 import NavBar from './components/navBar';
 import ItemListContainer from "./components/itemListContainer";
+import ItemDetailContainer from './components/itemDetailContainer';
 import Foot from "./components/footer";
+import Header from "./components/header"
 
 function App() {
 
   return (
     <>
     <NavBar/>
-    <ItemListContainer greeting="Productos"/>
+    <Header/>
+    {/* <ItemListContainer/> */}
+    <ItemDetailContainer/>
     <Foot/>
     </>
   )

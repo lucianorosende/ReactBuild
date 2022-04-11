@@ -15,3 +15,7 @@ code {
 .imgSect{
   background-image: url(https://images8.alphacoders.com/981/981684.jpg);
 }
+
+.maxW{
+  max-width: 3rem;
+}

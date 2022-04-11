@@ -27,13 +27,17 @@ const Counter = ({initial, stock, onAdd}) => {
     }
 
     return(
+        <>
+        <button className="btn btn-outline-dark me-2" onClick={decrement}>-</button>
+        <input className="form-control text-center maxW me-2" id="inputQuantity" type="num" value={counter}/>
+        <button className="btn btn-outline-dark me-2" onClick={increment}>+</button>
+                            <button className="btn btn-outline-dark flex-shrink-0" type="button" onClick={() => onAdd(counter)}>
+                                <i className="bi-cart-fill me-1"></i>
+                                Añadir a Carrito
+                            </button>
+        </>
         
-        <div className="d-flex justify-content-center">
-        <button className="btn btn-outline-dark bg-white m-1" onClick={decrement}>-</button>
-        <div className="btn btn-outline-bark bg-white m-1">{counter}</div>
-        <button className="btn btn-outline-dark bg-white m-1" onClick={increment}>+</button>
-        <button className="btn btn-outline-dark mt-auto bg-danger m-1" onClick={() => onAdd(counter)}>Add to Cart</button>
-        </div>
+        
     )
 
 }

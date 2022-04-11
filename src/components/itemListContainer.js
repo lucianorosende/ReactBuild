@@ -17,21 +17,11 @@ const Items = () => {
 
     }, [])
 
-    const addHandler = (quant) => {
-
-        if(quant === 0){
-          console.log(`no es posible agregar ${quant} items al carrito`)
-        }
-        else{console.log(`se agregaron ${quant} items al carrito`)} 
-        
-        
-      }
-
     return (
     <>
         <section className="py-5 imgSect">
         <ItemList products={products}/>
-        <Counter initial={0} stock={5} onAdd={addHandler}/>
+        {/* <Counter initial={0} stock={5} onAdd={addHandler}/> */}
         </section>         
     </>            
     )

@@ -2,8 +2,9 @@ const productos = [
 
     {
         id: 1,
-        title: "Comida 1",
-        description: "Descripcion de Comida 1",
+        title: "Pizza",
+        description: "Descripcion de la Comida 1",
+        descriptionLarge: "La pizza es una preparación culinaria que consiste en un pan plano, habitualmente de forma circular, elaborado con harina de trigo, levadura, agua y sal (a veces aceite de oliva) que tradicionalmente se cubre con salsa de tomate y mozzarella y se hornea a alta temperatura en un horno de leña",
         price: 50,
         imgUrl: "https://www.guidingtech.com/wp-content/uploads/HD-Mouth-Watering-Food-Wallpapers-for-Desktop-12_4d470f76dc99e18ad75087b1b8410ea9.jpg"
 
