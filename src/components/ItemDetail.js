@@ -1,6 +1,7 @@
 import Counter from "./itemCount"
 
-const ItemDetail = ({details}) => {
+const ItemDetail = ({imgUrl, descriptionLarge, title, price}) => {
+
 
     const addHandler = (quant) => {
 
@@ -17,14 +18,14 @@ const ItemDetail = ({details}) => {
         <section className="py-5">
             <div className="container px-4 px-lg-5 my-5">
                 <div className="row gx-4 gx-lg-5 align-items-center">
-                    <div className="col-md-6"><img className="card-img-top mb-5 mb-md-0" src={details.imgUrl} alt={details.title}/></div>
+                    <div className="col-md-6"><img className="card-img-top mb-5 mb-md-0" src={imgUrl} alt={title}/></div>
                     <div className="col-md-6">
-                        <h1 className="display-5 fw-bolder">{details.title}</h1>
+                        <h1 className="display-5 fw-bolder">{title}</h1>
                         <div className="fs-5 mb-5">
-                            <span className="text-decoration-line-through">${details.price * 1.2}ARS</span>
-                            <span>${details.price}ARS</span>
+                            <span className="text-decoration-line-through">${parseInt(price * 1.2)}ARS</span>
+                            <span>${price}ARS</span>
                         </div>
-                        <p className="lead">{details.descriptionLarge}</p>
+                        <p className="lead">{descriptionLarge}</p>
                         <div className="d-flex">
         
                         <Counter initial={0} stock={5} onAdd={addHandler}/>

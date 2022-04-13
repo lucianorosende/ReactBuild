@@ -1,26 +1,40 @@
 import ItemDetail from "./ItemDetail"
-import { useState,useEffect } from "react"
-import {productFetch} from "./asyncmock"
+import { useState, useEffect } from "react"
+import {productFetchById} from "./asyncmock"
+import {useParams} from "react-router-dom"
 
 const ItemDetailContainer = () => {
 
-    const [pDetail, setpDetail] = useState([])
+    const [pDetail, setpDetail] = useState()
+    const [loading, setLoad] = useState(true)
+
+    const { productId } = useParams()
 
     useEffect(() => {
 
-        productFetch().then(p => {
+        productFetchById(productId).then(p => {
             
-            setpDetail(p[0]);
+            setpDetail(p);
+        }).catch(err => {
+            console.log(err)
+        }).finally(() => {
+            setLoad(false);
         })
 
-    }, [])
-    
+        return(() => {
+
+            setpDetail()
+        })
+
+    }, [productId])
+
     return (
-    <>
-        
-        <ItemDetail details={pDetail}/>
+    
+        <div className="d-flex justify-content-center m-6">
+        {loading ? <button type="button" class="btn btn-outline-dark justify-content-center btn-lg">Cargando...</button> : pDetail ? <ItemDetail {...pDetail}/> : <button type="button" class="btn btn-outline-dark">El producto no existe!</button>}
                 
-    </>            
+        </div>   
+     
     )
 
 }
