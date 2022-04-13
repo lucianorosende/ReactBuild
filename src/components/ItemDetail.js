@@ -23,7 +23,7 @@ const ItemDetail = ({imgUrl, descriptionLarge, title, price}) => {
                         <h1 className="display-5 fw-bolder">{title}</h1>
                         <div className="fs-5 mb-5">
                             <span className="text-decoration-line-through">${parseInt(price * 1.2)}ARS</span>
-                            <span>${price}ARS</span>
+                            <span className="m-2">${price}ARS</span>
                         </div>
                         <p className="lead">{descriptionLarge}</p>
                         <div className="d-flex">

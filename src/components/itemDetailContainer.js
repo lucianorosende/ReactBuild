@@ -28,10 +28,18 @@ const ItemDetailContainer = () => {
 
     }, [productId])
 
+    console.log(pDetail)
+
     return (
     
         <div className="d-flex justify-content-center m-6">
-        {loading ? <button type="button" class="btn btn-outline-dark justify-content-center btn-lg">Cargando...</button> : pDetail ? <ItemDetail {...pDetail}/> : <button type="button" class="btn btn-outline-dark">El producto no existe!</button>}
+
+        {
+            loading ? 
+                <button type="button" className="btn btn-outline-dark justify-content-center btn-lg">Cargando...</button> : 
+            pDetail ? 
+                <ItemDetail {...pDetail}/> : <button type="button" className="btn btn-outline-dark">El producto no existe!</button>
+        }
                 
         </div>   
      

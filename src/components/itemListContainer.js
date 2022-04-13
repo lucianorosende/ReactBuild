@@ -6,7 +6,7 @@ import {productFetchByCategory} from "./asyncmock"
 
 const Items = () => {
 
-    const [productsCategory, setProducts] = useState([])
+    const [products, setProducts] = useState([])
     const { categoryId } = useParams();
 
     useEffect(() => {
@@ -19,12 +19,10 @@ const Items = () => {
 
     }, [categoryId])
 
-    console.log(categoryId)
-
     return (
     <>
         <section className="py-5 imgSect">
-        <ItemList products={productsCategory}/>
+        <ItemList products={products}/>
         </section>         
     </>            
     )
