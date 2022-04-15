@@ -30,7 +30,7 @@ const Counter = ({initial, stock, onAdd}) => {
         <>
         <button className="btn btn-outline-dark me-2" onClick={decrement}>-</button>
         <input className="form-control text-center maxW me-2" id="inputQuantity" type="num" value={counter}/>
-        <button className="btn btn-outline-dark me-2" onClick={increment}>+</button>
+        <button className="btn btn-outline-dark me-2 " onClick={increment}>+</button>
                             <button className="btn btn-outline-dark flex-shrink-0" type="button" onClick={() => onAdd(counter)}>
                                 <i className="bi-cart-fill me-1"></i>
                                 Añadir a Carrito

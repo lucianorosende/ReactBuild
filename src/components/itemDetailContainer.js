@@ -21,28 +21,28 @@ const ItemDetailContainer = () => {
             setLoad(false);
         })
 
-        return(() => {
+            // return(() => {
 
-            setpDetail()
-        })
+            //     setpDetail()
+            // })
 
     }, [productId])
 
-    console.log(pDetail)
 
     return (
-    
-        <div className="d-flex justify-content-center m-6">
-
-        {
-            loading ? 
-                <button type="button" className="btn btn-outline-dark justify-content-center btn-lg">Cargando...</button> : 
-            pDetail ? 
-                <ItemDetail {...pDetail}/> : <button type="button" className="btn btn-outline-dark">El producto no existe!</button>
-        }
-                
-        </div>   
-     
+    <>
+        
+             
+            {
+                loading ?
+                    <div className="d-flex justify-content-center"><button type="button" className="btn btn-outline-dark justify-content-center btn-lg m-6">Cargando...</button></div> :
+                pDetail ?
+                    <ItemDetail {...pDetail}/> : <div className="d-flex justify-content-center"><button type="button" className="btn btn-outline-dark m-6">El producto no existe!</button></div>
+            }
+            
+            
+          
+            </>
     )
 
 }
