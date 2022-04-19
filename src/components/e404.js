@@ -13,7 +13,7 @@ const Error404 = () => {
 
     return(
     
-                <div id="error-logo"/>
+      <div className="reset" id="error-logo"/>
     
     
     )
