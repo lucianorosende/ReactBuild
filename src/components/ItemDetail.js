@@ -1,6 +1,11 @@
 import Counter from "./itemCount"
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import CartSuccess from "./CartSuccess";
 
 const ItemDetail = ({imgUrl, descriptionLarge, title, price}) => {
+
+    const [quantity, setQuantity] = useState(0);
 
     const addHandler = (quant) => {
 
@@ -8,7 +13,7 @@ const ItemDetail = ({imgUrl, descriptionLarge, title, price}) => {
           console.log(`no es posible agregar ${quant} items al carrito`)
         }
         else{console.log(`se agregaron ${quant} items al carrito`)} 
-        
+        setQuantity(quant);
         
       }
 
@@ -27,7 +32,7 @@ const ItemDetail = ({imgUrl, descriptionLarge, title, price}) => {
                             </div>
                             <p className="lead">{descriptionLarge}</p>
                             <div className="d-flex">
-                            <Counter initial={0} stock={5} onAdd={addHandler}/>
+                            {quantity > 0 ? <Link to="/cart"><CartSuccess/></Link> : <Counter initial={0} stock={5} onAdd={addHandler}/>}
                             </div>
                         </div>
                     </div>
