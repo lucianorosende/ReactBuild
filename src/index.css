@@ -30,5 +30,13 @@ code {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  width: 40%;
+  width: 35%;
+}
+
+.resetLoad{
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }

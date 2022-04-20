@@ -1,19 +1,21 @@
 import Counter from "./itemCount"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import CartSuccess from "./CartSuccess";
+import CartContext from "../context/CartContext";
 
-const ItemDetail = ({imgUrl, descriptionLarge, title, price}) => {
+const ItemDetail = ({imgUrl, descriptionLarge, title, price, id}) => {
 
     const [quantity, setQuantity] = useState(0);
+    const {addItem, isInCart} = useContext(CartContext)
 
     const addHandler = (quant) => {
 
-        if(quant === 0){
-          console.log(`no es posible agregar ${quant} items al carrito`)
+        const prodObj = {
+            id, title, price, quantity: quant
         }
-        else{console.log(`se agregaron ${quant} items al carrito`)} 
-        setQuantity(quant);
+        setQuantity(quant)
+        addItem(prodObj)
         
       }
 
@@ -32,7 +34,7 @@ const ItemDetail = ({imgUrl, descriptionLarge, title, price}) => {
                             </div>
                             <p className="lead">{descriptionLarge}</p>
                             <div className="d-flex">
-                            {quantity > 0 ? <Link to="/cart"><CartSuccess/></Link> : <Counter initial={0} stock={5} onAdd={addHandler}/>}
+                            {isInCart(id) ? <Link to="/cart"><CartSuccess/></Link> : <Counter initial={0} stock={5} onAdd={addHandler}/>}
                             </div>
                         </div>
                     </div>

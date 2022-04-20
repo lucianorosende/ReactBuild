@@ -2,6 +2,8 @@ import ItemDetail from "./ItemDetail"
 import { useState, useEffect } from "react"
 import {productFetchById} from "./asyncmock"
 import {useParams} from "react-router-dom"
+import LoadingAnimation from "../animations/loader"
+import Error404 from "../animations/e404"
 
 const ItemDetailContainer = () => {
 
@@ -34,10 +36,10 @@ const ItemDetailContainer = () => {
         
              
             {
-                loading ?
-                    <div className="d-flex justify-content-center"><button type="button" className="btn btn-outline-dark justify-content-center btn-lg m-6">Cargando...</button></div> :
+                loading ? <LoadingAnimation></LoadingAnimation>
+                     :
                 pDetail ?
-                    <ItemDetail {...pDetail}/> : <div className="d-flex justify-content-center"><button type="button" className="btn btn-outline-dark m-6">El producto no existe!</button></div>
+                    <ItemDetail {...pDetail}/> : <Error404></Error404>
             }
             
             

@@ -1,15 +1,17 @@
 import NavBar from './components/navBar';
 import ItemListContainer from "./components/itemListContainer";
 import ItemDetailContainer from './components/itemDetailContainer';
-import Error404 from './components/e404';
+import Error404 from "./animations/e404"
 import Foot from "./components/footer";
 import Header from "./components/header"
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { CartContextProvider } from './context/CartContext';
 
 function App() {
 
   return (
     <>
+    <CartContextProvider>
     <BrowserRouter>
     <NavBar/>
     <Header/>
@@ -22,7 +24,9 @@ function App() {
     </Routes>
 
     </BrowserRouter>
+    </CartContextProvider>
     <Foot/>
+    
     </>
   )
     
