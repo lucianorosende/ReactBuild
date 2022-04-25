@@ -1,10 +1,18 @@
 import CartContext from "../context/CartContext"
-import {useContext} from "react"
+import {useContext, useState} from "react"
 import {Link} from "react-router-dom"
 
 let CartWidget = () => {
 
+    const [quant, setQuant] = useState(0)
     const {getQuant} = useContext(CartContext)
+
+    // setQuant(getQuant())
+   
+    if(!getQuant()){
+        return null
+    }
+
 
     return(
 

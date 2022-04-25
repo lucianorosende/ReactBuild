@@ -7,17 +7,19 @@ import CartContext from "../context/CartContext";
 const ItemDetail = ({imgUrl, descriptionLarge, title, price, id}) => {
 
     const [quantity, setQuantity] = useState(0);
-    const {addItem, isInCart} = useContext(CartContext)
+    const [pricing, setPricing] = useState([]);
+    const {addItem, isInCart, getPrice} = useContext(CartContext)
 
     const addHandler = (quant) => {
 
         const prodObj = {
-            id, title, price, quantity: quant
+            id, title, price, quantity: quant, totalPrice : price * quant
         }
         setQuantity(quant)
         addItem(prodObj)
-        
-      }
+        getPrice(prodObj.totalPrice)
+        }
+
 
     return(
         <div className="py-5 woodImg">

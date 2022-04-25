@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 2.5rem;
 }
 
 code {
@@ -27,7 +30,7 @@ code {
 }
 
 .reset{
-  margin: 0 auto;
+  margin: auto;
   display: flex;
   justify-content: center;
   width: 35%;
@@ -39,4 +42,11 @@ code {
   justify-content: center;
   margin-bottom: 2rem;
   margin-top: 2rem;
+}
+
+.footHolder{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1rem;   
 }
