@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import CartContext from "./../context/CartContext"
-import CartAnimation from "../animations/cartAnimation"
+import CartAnimation from "./../services/animations/cartAnimation"
 
 const Cart = () => {
 

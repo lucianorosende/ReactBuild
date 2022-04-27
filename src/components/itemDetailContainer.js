@@ -2,8 +2,10 @@ import ItemDetail from "./ItemDetail"
 import { useState, useEffect } from "react"
 import {productFetchById} from "./asyncmock"
 import {useParams} from "react-router-dom"
-import LoadingAnimation from "../animations/loader"
-import Error404 from "../animations/e404"
+import LoadingAnimation from "../services/animations/loader"
+import Error404 from "../services/animations/e404"
+import { fireStoreDB } from "../services/firebase"
+import { getDoc, doc } from "firebase/firestore"
 
 const ItemDetailContainer = () => {
 
@@ -14,15 +16,17 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
 
-        productFetchById(productId).then(p => {
+        getDoc(doc(fireStoreDB, "productos", productId)).then(p => {
             
-            setpDetail(p);
+            const pID = {id: p.id, ...p.data()}
+
+            setpDetail(pID);
         }).catch(err => {
             console.log(err)
         }).finally(() => {
             setLoad(false);
         })
-
+        
             // return(() => {
 
             //     setpDetail()
@@ -30,6 +34,7 @@ const ItemDetailContainer = () => {
 
     }, [productId])
 
+    
 
     return (
     <>

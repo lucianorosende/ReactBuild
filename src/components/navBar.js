@@ -2,6 +2,8 @@ import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
 import { catFetch } from "./asyncmock"
 import {useState, useEffect} from "react"
+import { fireStoreDB } from "../services/firebase"
+import {getDocs, collection} from "firebase/firestore"
 
 
 
@@ -11,12 +13,23 @@ const Nav = () => {
 
     useEffect(() => {
 
-        catFetch().then(r => {
+        // catFetch().then(r => {
 
-            setCategories(r);
+        //     setCategories(r);
 
+        // })
+
+        getDocs(collection(fireStoreDB, "categories")).then(r => {
+
+            const categorieFetch = r.docs.map(doc => {
+
+                return {id: doc.id , ...doc.data()}
+            })
+
+            setCategories(categorieFetch)
+            
         })
-
+        
     }, [])
 
     return (

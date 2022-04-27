@@ -1,5 +1,5 @@
 import lottie from "lottie-web"
-import Err404 from "../static/404.json"
+import Err404 from "../LottieFiles/404.json"
 import { useEffect } from "react";
 
 const Error404 = () => {

@@ -1,7 +1,7 @@
 import NavBar from './components/navBar';
 import ItemListContainer from "./components/itemListContainer";
 import ItemDetailContainer from './components/itemDetailContainer';
-import Error404 from "./animations/e404"
+import Error404 from "./services/animations/e404"
 import Foot from "./components/footer";
 import Header from "./components/header"
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'

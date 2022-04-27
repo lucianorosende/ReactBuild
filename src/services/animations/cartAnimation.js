@@ -1,5 +1,5 @@
 import lottie from "lottie-web"
-import cartAnimation from "./../static/cart.json"
+import cartAnimation from "./../LottieFiles/cart.json"
 import { useEffect } from "react";
 import {Link} from "react-router-dom"
 

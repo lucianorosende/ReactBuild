@@ -1,5 +1,5 @@
 import lottie from "lottie-web"
-import Loading from "../static/loading.json"
+import Loading from "../LottieFiles/loading.json"
 import { useEffect } from "react";
 
 const LoadingAnimation = () => {
