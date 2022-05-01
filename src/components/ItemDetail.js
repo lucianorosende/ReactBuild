@@ -5,19 +5,15 @@ import CartSuccess from "./CartSuccess";
 import CartContext from "../context/CartContext";
 
 const ItemDetail = ({imgUrl, descriptionLarge, title, price, id}) => {
-
-    const [quantity, setQuantity] = useState(0);
-    const [pricing, setPricing] = useState([]);
-    const {addItem, isInCart, getPrice} = useContext(CartContext)
+   
+    const {addItem, isInCart} = useContext(CartContext)
 
     const addHandler = (quant) => {
 
         const prodObj = {
             id, title, price, quantity: quant, totalPrice : price * quant
         }
-        setQuantity(quant)
         addItem(prodObj)
-        getPrice(prodObj.totalPrice)
         }
 
 

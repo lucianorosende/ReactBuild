@@ -4,7 +4,7 @@ import CartAnimation from "./../services/animations/cartAnimation"
 
 const Cart = () => {
 
-    const { cart, removeFromCart, price } = useContext(CartContext)
+    const { cart, removeFromCart, price, getPrice } = useContext(CartContext)
 
     if(cart.length === 0) {
         return (
@@ -19,7 +19,7 @@ const Cart = () => {
             {
                 cart.map(prod => <li key={prod.id}>{prod.name}  cantidad: {prod.quantity} precio uni: {prod.price}  subtotal: {prod.quantity * prod.price} <button onClick={() => removeFromCart(prod.id)}>X</button></li>)
             }  
-            <h5>total:{price}</h5> 
+            <h5>total:{getPrice()}</h5> 
         </ul>
         </>
     )
