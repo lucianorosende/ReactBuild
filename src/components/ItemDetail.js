@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CartSuccess from "./CartSuccess";
 import CartContext from "../context/CartContext";
 
-const ItemDetail = ({imgUrl, descriptionLarge, title, price, id}) => {
+const ItemDetail = ({imgUrl, descriptionLarge, title, price, id, stock}) => {
    
     const {addItem, isInCart} = useContext(CartContext)
 
@@ -32,7 +32,7 @@ const ItemDetail = ({imgUrl, descriptionLarge, title, price, id}) => {
                             </div>
                             <p className="lead">{descriptionLarge}</p>
                             <div className="d-flex">
-                            {isInCart(id) ? <Link to="/cart"><CartSuccess/></Link> : <Counter initial={0} stock={5} onAdd={addHandler}/>}
+                            {isInCart(id) ? <Link to="/cart"><CartSuccess/></Link> : <Counter initial={1} stock={stock} onAdd={addHandler}/>}
                             </div>
                         </div>
                     </div>
