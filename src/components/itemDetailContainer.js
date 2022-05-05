@@ -6,6 +6,7 @@ import LoadingAnimation from "../services/animations/loader"
 import Error404 from "../services/animations/e404"
 import { fireStoreDB } from "../services/firebase"
 import { getDoc, doc } from "firebase/firestore"
+import { createProductAdaptFromFS } from "../adapters/ProductAdaptation"
 
 const ItemDetailContainer = () => {
 
@@ -17,10 +18,9 @@ const ItemDetailContainer = () => {
     useEffect(() => {
 
         getDoc(doc(fireStoreDB, "productos", productId)).then(p => {
+        
+            setpDetail(createProductAdaptFromFS(p));
             
-            const pID = {id: p.id, ...p.data()}
-
-            setpDetail(pID);
         }).catch(err => {
             console.log(err)
         }).finally(() => {

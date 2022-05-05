@@ -44,7 +44,8 @@ const Cart = () => {
                     if(docData.stock >= productQuant){
 
                         batch.update(doc.ref, {stock: docData.stock - productQuant})
-                    } else{
+                    } 
+                    else{
 
                         outOfStock.push({id: doc.id, ...docData})
                     }
