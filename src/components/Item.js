@@ -24,7 +24,7 @@ const Item = ({id, title, description, price, imgUrl}) => {
                                     
                                     <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                         <div className="text-center"><Link to={`/detail/${id}`} className="btn btn-outline-dark mt-auto m-2">Ver Detalles</Link></div>
-                                        <div className="text-center"><a className="btn btn-outline-dark mt-auto " href="">Añadir a carrito</a></div>
+                                        <div className="text-center"><Link key={id} className="btn btn-outline-dark mt-auto" to={"/cart"}>Añadir a Carrito</Link></div>
                                     </div>
                                 </div>
                             </div>                      

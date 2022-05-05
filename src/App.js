@@ -4,7 +4,7 @@ import ItemDetailContainer from './components/itemDetailContainer';
 import Error404 from "./services/animations/e404"
 import Foot from "./components/footer";
 import Header from "./components/header"
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import { CartContextProvider } from './context/CartContext';
 import Cart from './components/Cart';
 

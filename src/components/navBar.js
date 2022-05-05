@@ -1,6 +1,5 @@
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
-import { catFetch } from "./asyncmock"
 import {useState, useEffect} from "react"
 import { fireStoreDB } from "../services/firebase"
 import {getDocs, collection} from "firebase/firestore"
@@ -44,7 +43,7 @@ const Nav = () => {
                                 <li className="nav-item"><Link to="/" className="nav-link active">Inicio</Link></li>
                                 <li className="nav-item"><Link to="/about" className="nav-link">Nosotros</Link></li>
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="$" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         {categories.map(cat => <Link key={cat.id} className="dropdown-item" to={`/category/${cat.id}`}>{cat.description}</Link>)}
                                     </ul>

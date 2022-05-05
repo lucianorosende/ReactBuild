@@ -24,7 +24,7 @@ export const useAsyncHook = (asyFn, setProducts, errFn, setLoading, depend = [])
         }
             
 
-    }, depend)
+    }, depend) //eslint-disable-line
             
 
 }

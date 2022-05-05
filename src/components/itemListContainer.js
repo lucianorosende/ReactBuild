@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom"
 import ItemList from "./itemList"
-import {useState, useEffect} from "react"
+import {useState} from "react"
 import { productFetchByCategory } from "../services/firebase/firestore"
 import LoadingAnimation from "../services/animations/loader"
 import { useAsyncHook } from "../hooks/asyncHook"

@@ -1,6 +1,5 @@
 import ItemDetail from "./ItemDetail"
 import { useState, useEffect } from "react"
-import {productFetchById} from "./asyncmock"
 import {useParams} from "react-router-dom"
 import LoadingAnimation from "../services/animations/loader"
 import Error404 from "../services/animations/e404"
