@@ -35,6 +35,9 @@ code {
   justify-content: center;
   width: 35%;
 }
+.w{
+  width: 35%;
+}
 
 .resetLoad{
   margin: 0 auto;
@@ -49,4 +52,10 @@ code {
   bottom: 0;
   width: 100%;
   height: 1rem;   
+}
+
+.textAbsolute{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
