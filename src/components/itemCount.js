@@ -30,7 +30,7 @@ const Counter = ({initial, stock, onAdd}) => {
         return(
             
             <button className="btn btn-danger flex-shrink-0" type="button">
-                <i class="bi bi-exclamation-triangle me-2"></i>
+                <i className="bi bi-exclamation-triangle me-2"></i>
                 No hay Stock!
             </button>
             
