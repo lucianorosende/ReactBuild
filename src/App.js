@@ -1,4 +1,5 @@
 import NavBar from './components/navBar';
+import DB from './services/firebase/productdb';
 import ItemListContainer from "./components/itemListContainer";
 import ItemDetailContainer from './components/itemDetailContainer';
 import Error404 from "./services/animations/e404"
@@ -14,6 +15,7 @@ function App() {
     <>
     <CartContextProvider>
     <BrowserRouter>
+    <DB/>
     <NavBar/>
     <Header/>
     <Routes>

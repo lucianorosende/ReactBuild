@@ -7,9 +7,9 @@ import LoadingAnimation from "../services/animations/loader"
 
 const Cart = () => {
     
-    const { cart, removeFromCart, getPrice, cartClear, cartSaver, load, setLoad } = useContext(CartContext)
+    const {removeFromCart, getPrice, cartClear, cartSaver, load, setLoad } = useContext(CartContext)
 
-
+   
 
     
    console.log("cart:", cartSaver)
@@ -17,7 +17,7 @@ const Cart = () => {
     const createOrder = () => {
         setLoad(true)
         const orderCreate = {
-            items: cart,
+            items: cartSaver,
             buyer: {
 
                 name: "Luciano Rosende",
@@ -29,7 +29,7 @@ const Cart = () => {
             date: new Date()
         }
 
-        const ids = cart.map(prod => prod.id)
+        const ids = cartSaver.map(prod => prod.id)
 
         const batch = writeBatch(fireStoreDB)
 
@@ -42,7 +42,7 @@ const Cart = () => {
                 res.docs.forEach(doc => {
 
                     const docData = doc.data()
-                    const productQuant = cart.find(p => p.id === doc.id)?.quantity
+                    const productQuant = cartSaver.find(p => p.id === doc.id)?.quantity
 
                     if(docData.stock >= productQuant){
 
@@ -92,9 +92,11 @@ const Cart = () => {
    
         return (
             <>
+            
             <h1>Cart</h1>
             <ul>
-                {
+                {   
+                    
                     cartSaver.map(prod => <li key={prod.id}>{prod.name}  cantidad: {prod.quantity} precio uni: {prod.price}  subtotal: {prod.quantity * prod.price} <button onClick={() => removeFromCart(prod.id)}>X</button></li>)
                 }  
                 <h5>total:{getPrice()}</h5>

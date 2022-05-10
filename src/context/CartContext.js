@@ -8,34 +8,41 @@ export const CartContextProvider = ({children}) => {
 
     const [cartSaver, setCartSaver] = useState([])
     const [load, setLoad] = useState(false);
+
     
     const refCart = collection(fireStoreDB, "cart")
-
-    if(cartSaver.length !== 0){
-        setDoc(doc(refCart, "cart"), {
-            cartSaver
-            })
-    }    
     
-    useEffect(() => {
+        if(cartSaver.length !== 0){
+            setDoc(doc(refCart, "cart"), {
+                cartSaver
+                })
+        }    
         
-        setLoad(true)
-        getDocs(refCart).then(r => {
-
-        
+        useEffect(() => {
             
-            const data = r.docs.map(doc => {
-                return doc.data()
+            setLoad(true)
+            getDocs(refCart).then(r => {
+
+            
+                
+                const data = r.docs.map(doc => {
+                    return doc.data()
+                })
+
+                setCartSaver(data[0]?.cartSaver || []) 
+                
             })
+            .catch(e => console.log(e))
+            .finally(() => {
+                setLoad(false)
+            })
+        }, []) //eslint-disable-line
+   
+          
 
-            setCartSaver(data[0]?.cartSaver || []) 
-            
-        })
-        .catch(e => console.log(e))
-        .finally(() => {
-            setLoad(false)
-        })
-    }, []) //eslint-disable-line
+    
+
+    
 
     const addItem = (productToAdd) => {
         setCartSaver([...cartSaver, productToAdd])
@@ -94,7 +101,8 @@ export const CartContextProvider = ({children}) => {
             getPrice,
             cartSaver,
             load,
-            setLoad
+            setLoad,
+            
 
         }}>
             {children}
