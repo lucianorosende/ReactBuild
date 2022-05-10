@@ -1,9 +1,12 @@
-import { useState, createContext } from "react"
+import { useState, createContext, useEffect } from "react"
+import { collection, setDoc, doc, getDocs } from "firebase/firestore"
+import { fireStoreDB } from "../services/firebase"
 
 const CartContext = createContext()
 
 export const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([])
+    const [cartSaver, setCartSaver] = useState([])
     
 
     const addItem = (productToAdd) => {
@@ -12,7 +15,7 @@ export const CartContextProvider = ({children}) => {
 
     const getQuant = () => {
         let count = 0
-        cart.forEach(prod => {
+        cartSaver.forEach(prod => {
             count += prod.quantity
         })
         return count
@@ -23,7 +26,7 @@ export const CartContextProvider = ({children}) => {
     const getPrice = () => {
 
     let total = 0
-    cart.forEach(prod => {
+    cartSaver.forEach(prod => {
         total += prod.quantity * prod.price
     })  
 
@@ -34,12 +37,12 @@ export const CartContextProvider = ({children}) => {
 
 
     const isInCart = (id) => {
-        return cart.some(prod => prod.id === id )
+        return cartSaver.some(prod => prod.id === id )
     }
 
     const cartClear = () => {
-
-        setCart([]);
+        setCartSaver([])
+        setDoc(doc(refCart, "cart"), {})
     }
 
     const removeFromCart = (id) => {
@@ -48,6 +51,39 @@ export const CartContextProvider = ({children}) => {
         setCart(products)
 
     }
+
+    const refCart = collection(fireStoreDB, "cart")
+
+    if(cart.length !== 0){
+        setDoc(doc(refCart, "cart"), {
+            cart
+            })
+    }    
+    
+    useEffect(() => {
+        
+        // setLoad(true)
+        getDocs(refCart).then(r => {
+
+        
+            
+            const data = r.docs.map(doc => {
+                return doc.data()
+            })
+
+            setCartSaver(data[0]?.cart || []) 
+            
+        })
+        // .catch(e => console.log(e))
+        // .finally(() => {
+        //     // setLoad(false)
+        // })
+    }, [cart]) //eslint-disable-line
+   
+        
+
+        
+
 
 
 
@@ -60,7 +96,8 @@ export const CartContextProvider = ({children}) => {
             isInCart,
             cartClear,
             removeFromCart,
-            getPrice
+            getPrice,
+            cartSaver
 
         }}>
             {children}

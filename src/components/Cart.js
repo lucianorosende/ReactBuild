@@ -8,41 +8,11 @@ import LoadingAnimation from "../services/animations/loader"
 
 const Cart = () => {
     
-    const [cartSaver, setCartSaver] = useState([])
     const [load, setLoad] = useState(false);
-    const { cart, removeFromCart, getPrice, cartClear } = useContext(CartContext)
+    const { cart, removeFromCart, getPrice, cartClear, cartSaver } = useContext(CartContext)
 
-    const refCart = collection(fireStoreDB, "cart")
 
-    
-    
-    useEffect(() => {
 
-        setLoad(true)
-
-        if(cart.length !== 0){
-            setDoc(doc(refCart, "cart"), {
-                cart
-              })
-        }
-
-        getDocs(refCart).then(r => {
-
-        
-            
-            const data = r.docs.map(doc => {
-                return doc.data()
-            })
-
-            setCartSaver(data[0]?.cart || []) 
-            
-        })
-        .catch(e => console.log(e))
-        .finally(() => {
-            setLoad(false)
-        })
-    }, []) //eslint-disable-line
-    
     
    console.log("cart:", cartSaver)
 
