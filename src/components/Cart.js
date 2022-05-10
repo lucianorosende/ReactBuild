@@ -1,15 +1,13 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import CartContext from "./../context/CartContext"
 import CartAnimation from "./../services/animations/cartAnimation"
-import {writeBatch, collection, query, getDocs, where, documentId, addDoc, setDoc, doc} from "firebase/firestore"
+import {writeBatch, collection, query, getDocs, where, documentId, addDoc} from "firebase/firestore"
 import { fireStoreDB } from "../services/firebase/index"
-import { useState } from "react"
 import LoadingAnimation from "../services/animations/loader"
 
 const Cart = () => {
     
-    const [load, setLoad] = useState(false);
-    const { cart, removeFromCart, getPrice, cartClear, cartSaver } = useContext(CartContext)
+    const { cart, removeFromCart, getPrice, cartClear, cartSaver, load, setLoad } = useContext(CartContext)
 
 
 

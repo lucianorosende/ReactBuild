@@ -5,12 +5,40 @@ import { fireStoreDB } from "../services/firebase"
 const CartContext = createContext()
 
 export const CartContextProvider = ({children}) => {
-    const [cart, setCart] = useState([])
+
     const [cartSaver, setCartSaver] = useState([])
+    const [load, setLoad] = useState(false);
     
+    const refCart = collection(fireStoreDB, "cart")
+
+    if(cartSaver.length !== 0){
+        setDoc(doc(refCart, "cart"), {
+            cartSaver
+            })
+    }    
+    
+    useEffect(() => {
+        
+        setLoad(true)
+        getDocs(refCart).then(r => {
+
+        
+            
+            const data = r.docs.map(doc => {
+                return doc.data()
+            })
+
+            setCartSaver(data[0]?.cartSaver || []) 
+            
+        })
+        .catch(e => console.log(e))
+        .finally(() => {
+            setLoad(false)
+        })
+    }, []) //eslint-disable-line
 
     const addItem = (productToAdd) => {
-        setCart([...cart, productToAdd])
+        setCartSaver([...cartSaver, productToAdd])
     }
 
     const getQuant = () => {
@@ -47,57 +75,26 @@ export const CartContextProvider = ({children}) => {
 
     const removeFromCart = (id) => {
 
-        const products = cart.filter(prod => prod.id !== id)
-        setCart(products)
-
-    }
-
-    const refCart = collection(fireStoreDB, "cart")
-
-    if(cart.length !== 0){
+        const products = cartSaver.filter(prod => prod.id !== id)
+        setCartSaver(products)
         setDoc(doc(refCart, "cart"), {
-            cart
-            })
-    }    
-    
-    useEffect(() => {
-        
-        // setLoad(true)
-        getDocs(refCart).then(r => {
-
-        
-            
-            const data = r.docs.map(doc => {
-                return doc.data()
-            })
-
-            setCartSaver(data[0]?.cart || []) 
-            
+            products
         })
-        // .catch(e => console.log(e))
-        // .finally(() => {
-        //     // setLoad(false)
-        // })
-    }, [cart]) //eslint-disable-line
-   
-        
-
-        
-
-
+    }
 
 
     return(
 
         <CartContext.Provider value={{
-            cart,
             addItem,
             getQuant,
             isInCart,
             cartClear,
             removeFromCart,
             getPrice,
-            cartSaver
+            cartSaver,
+            load,
+            setLoad
 
         }}>
             {children}
