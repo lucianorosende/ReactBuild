@@ -4,7 +4,7 @@ import CartContext from "../context/CartContext"
 
 const Item = ({id, title, description, price, imgUrl, stock}) => {
 
-    const {addItem} = useContext(CartContext)
+    const {addItem, isInCart} = useContext(CartContext)
 
     const handler = () => {
 
@@ -38,7 +38,10 @@ const Item = ({id, title, description, price, imgUrl, stock}) => {
                     <div className="text-center">
 
                     {
-                        stock === 0 ? <button className="btn btn-danger mt-auto">No hay stock!</button> :
+                        stock === 0 ? <button className="btn btn-danger mt-auto">No hay stock!</button> 
+                                    : 
+                        isInCart(id) ? <Link key={id} className="btn btn-success mt-auto" to={"/cart"}>Ir al Carrito</Link> 
+                                    :
                                     <Link key={id} className="btn btn-success mt-auto" to={"/cart"} onClick={handler}><i className="bi-cart-fill me-1"></i>Añadir a Carrito</Link>
                     }
                     
