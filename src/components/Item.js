@@ -2,9 +2,12 @@ import { Link } from "react-router-dom"
 import { useContext } from "react"
 import CartContext from "../context/CartContext"
 
-const Item = ({id, title, description, price, imgUrl, stock}) => {
+const Item = ({id, title, description, price, imgUrl, stock, category}) => {
 
     const {addItem, isInCart} = useContext(CartContext)
+
+
+    
 
     const handler = () => {
 
@@ -27,8 +30,15 @@ const Item = ({id, title, description, price, imgUrl, stock}) => {
                         
                         <h5 className="fw-bolder">{title}</h5>
                         <h6>{description}</h6>
+                        {
+                            category === "descuento" ? 
+                            <>
+                            <span className="text-decoration-line-through">${parseInt(price * 1.2)}</span> 
+                            <span> ${price}</span> 
+                            </> 
+                            : `$${price}`
+                        }
                         
-                        ${price}
                         
                     </div>
                 </div>

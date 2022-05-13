@@ -32,7 +32,7 @@ const Items = () => {
     return (
     <>
             
-            <ItemList products={products}/>
+            <ItemList products={products} category={categoryId}/>
             
 
     </>            
