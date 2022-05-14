@@ -211,10 +211,13 @@ label {
   font-size: 25px;
   border-radius: 3px;
   margin-bottom: 10%;
+  text-decoration: none;
 }
 
 .checkout:hover {
   background-color: #494;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Make adjustments for tablet */

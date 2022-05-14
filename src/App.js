@@ -8,6 +8,7 @@ import Header from "./components/header"
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import { CartContextProvider } from './context/CartContext';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
       <Route path="/category/:categoryId" element={<ItemListContainer/>}></Route>
       <Route path="/about" element={<Error404/>}></Route>
       <Route path='/cart' element={<Cart/>}></Route>
+      <Route path="/checkout" element={<Checkout/>}></Route>
       <Route path="*" element={<Error404/>}></Route>
       
     </Routes>

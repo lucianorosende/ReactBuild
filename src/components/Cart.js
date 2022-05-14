@@ -1,86 +1,15 @@
 import { useContext } from "react"
 import CartContext from "./../context/CartContext"
 import CartAnimation from "./../services/animations/cartAnimation"
-import {writeBatch, collection, query, getDocs, where, documentId, addDoc} from "firebase/firestore"
-import { fireStoreDB } from "../services/firebase/index"
 import LoadingAnimation from "../services/animations/loader"
 import CartItem from "./CartItem"
 import CartLabels from "./CartLabels"
 import CartTotal from "./CartTotal"
+import { Link } from "react-router-dom"
 
 const Cart = () => {
     
-    const {getPrice, cartClear, cartSaver, load, setLoad } = useContext(CartContext)
-
-   
-
-    
-//    console.log("cart:", cartSaver)
-
-    const createOrder = () => {
-        setLoad(true)
-        const orderCreate = {
-            items: cartSaver,
-            buyer: {
-
-                name: "Luciano Rosende",
-                phone: "+541144971105",
-                email: "lucianorosende@gmail.com"
-
-            },
-            total: getPrice(),
-            date: new Date()
-        }
-
-        const ids = cartSaver.map(prod => prod.id)
-
-        const batch = writeBatch(fireStoreDB)
-
-        const collectionRef = collection(fireStoreDB, 'productos')
-
-        const outOfStock = []
-
-        getDocs(query(collectionRef, where(documentId(), "in", ids)))
-            .then(res => {
-                res.docs.forEach(doc => {
-
-                    const docData = doc.data()
-                    const productQuant = cartSaver.find(p => p.id === doc.id)?.quantity
-
-                    if(docData.stock >= productQuant){
-
-                        batch.update(doc.ref, {stock: docData.stock - productQuant})
-                    } 
-                    else{
-
-                        outOfStock.push({id: doc.id, ...docData})
-                    }
-
-                })
-
-
-            }).then(() => {
-
-                if(outOfStock.length === 0){
-                    
-                    const collectRef = collection(fireStoreDB, "orders")
-                    return addDoc(collectRef, orderCreate)
-                } else {
-                    return Promise.reject({name: 'outOfStockError', products: outOfStock})
-                }
-
-            }).then(({id}) => {
-
-                batch.commit()
-                console.log(`id order is : ${id}`)
-            }).catch(e => {
-                console.log(e)
-            }).finally(() => {
-                setLoad(false)
-            })
-
-
-    }
+    const {cartClear, cartSaver, load } = useContext(CartContext)
     
     if(load) {
         return <LoadingAnimation></LoadingAnimation>
@@ -104,7 +33,7 @@ const Cart = () => {
 
   
       
-      <button className="checkout" onClick={() => createOrder()}>Checkout</button>
+      <Link className="checkout" to={"/checkout"}>Checkout</Link>
       <button className="checkout me-2" onClick={() => cartClear()}>Limpiar Carrito</button>
 
 </div>

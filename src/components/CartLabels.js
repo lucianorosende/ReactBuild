@@ -2,8 +2,8 @@ const CartLabels = () => {
 
     return(
         <>
-        <div class="d-grid gap-2 m-4 col-6 mx-auto">
-            <button class="btn btn-primary" type="button">Mi Carrito</button>
+        <div className="d-grid gap-2 m-4 col-3 mx-auto">
+            <button className="btn btn-primary" type="button">Mi Carrito</button>
             </div>
             <div className="column-labels">
                 <label className="product-image">Imagen</label>
