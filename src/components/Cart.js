@@ -4,15 +4,18 @@ import CartAnimation from "./../services/animations/cartAnimation"
 import {writeBatch, collection, query, getDocs, where, documentId, addDoc} from "firebase/firestore"
 import { fireStoreDB } from "../services/firebase/index"
 import LoadingAnimation from "../services/animations/loader"
+import CartItem from "./CartItem"
+import CartLabels from "./CartLabels"
+import CartTotal from "./CartTotal"
 
 const Cart = () => {
     
-    const {removeFromCart, getPrice, cartClear, cartSaver, load, setLoad } = useContext(CartContext)
+    const {getPrice, cartClear, cartSaver, load, setLoad } = useContext(CartContext)
 
    
 
     
-   console.log("cart:", cartSaver)
+//    console.log("cart:", cartSaver)
 
     const createOrder = () => {
         setLoad(true)
@@ -83,91 +86,26 @@ const Cart = () => {
         return <LoadingAnimation></LoadingAnimation>
     }
 
-    // if(cartSaver.length === 0) {
-    //     return (
-    //         <CartAnimation></CartAnimation>
-    //     )
-    // }
+    if(cartSaver.length === 0) {
+        return (
+            <CartAnimation></CartAnimation>
+        )
+    }
     
    
         return (
             <>
 
-            
+        <div className="shopping-cart">
 
+            <CartLabels/>
+            <CartItem cartInfo={cartSaver} {...cartSaver} />
+            <CartTotal/>
 
-
-<div className="shopping-cart">
-    <h1 className="d-flex justify-content-center">Mi carrito</h1>
-  <div className="column-labels">
-    <label className="product-image">Imagen</label>
-    <label className="product-details">Producto</label>
-    <label className="product-price">Precio</label>
-    <label className="product-quantity">Cantidad</label>
-    <label className="product-removal">Remover</label>
-    <label className="product-line-price">Total</label>
-  </div>
-
-  <div className="product">
-    <div className="product-image">
-      <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg"/>
-    </div>
-    <div className="product-details">
-      <div className="product-title">Dingo Dog Bones</div>
-      <p className="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
-    </div>
-    <div className="product-price">12.99</div>
-    <div className="product-quantity">
-      <input type="number" value="2" min="1"/>
-    </div>
-    <div className="product-removal">
-      <button className="remove-product">
-        Remove
-      </button>
-    </div>
-    <div className="product-line-price">25.98</div>
-  </div>
-
-  <div className="product">
-    <div className="product-image">
-      <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png"/>
-    </div>
-    <div className="product-details">
-      <div className="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
-      <p className="product-description">Who doesn't like lamb and rice? We've all hit the halal cart at 3am while quasi-blackout after a night of binge drinking in Manhattan. Now it's your dog's turn!</p>
-    </div>
-    <div className="product-price">45.99</div>
-    <div className="product-quantity">
-      <input type="number" value="1" min="1"/>
-    </div>
-    <div className="product-removal">
-      <button className="remove-product">
-        Remove
-      </button>
-    </div>
-    <div className="product-line-price">45.99</div>
-  </div>
-
-  <div className="totals">
-    <div className="totals-item">
-      <label>Subtotal</label>
-      <div className="totals-value" id="cart-subtotal">71.97</div>
-    </div>
-    <div className="totals-item">
-      <label>Tax (5%)</label>
-      <div className="totals-value" id="cart-tax">3.60</div>
-    </div>
-    <div className="totals-item">
-      <label>Shipping</label>
-      <div className="totals-value" id="cart-shipping">15.00</div>
-    </div>
-    <div className="totals-item totals-item-total">
-      <label>Grand Total</label>
-      <div className="totals-value" id="cart-total">90.57</div>
-    </div>
-  </div>
+  
       
-      <button className="checkout">Checkout</button>
+      <button className="checkout" onClick={() => createOrder()}>Checkout</button>
+      <button className="checkout me-2" onClick={() => cartClear()}>Limpiar Carrito</button>
 
 </div>
 

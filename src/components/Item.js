@@ -12,11 +12,12 @@ const Item = ({id, title, description, price, imgUrl, stock, category}) => {
     const handler = () => {
 
         const prodObj = {
-            id, title, price, quantity: 1
+            id, title, price, quantity: 1, imgUrl, description, totalPrice: price 
         }
         addItem(prodObj)
+        
         }   
-
+        
 
     return (
 

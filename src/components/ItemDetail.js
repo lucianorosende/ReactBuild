@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import CartSuccess from "./CartSuccess";
 import CartContext from "../context/CartContext";
 
-const ItemDetail = ({imgUrl, descriptionLarge, title, price, id, stock}) => {
+const ItemDetail = ({imgUrl, descriptionLarge, title, price, id, stock, description}) => {
    
     const {addItem, isInCart} = useContext(CartContext)
 
     const addHandler = (quant) => {
 
         const prodObj = {
-            id, title, price, quantity: quant, totalPrice : price * quant
+            id, title, description, imgUrl, price, quantity: quant, totalPrice : price * quant
         }
         addItem(prodObj)
         }

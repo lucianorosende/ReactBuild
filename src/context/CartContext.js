@@ -69,7 +69,30 @@ export const CartContextProvider = ({children}) => {
         
     }
 
+    const getPriceTax = () => {
 
+        let total = 0
+        cartSaver.forEach(prod => {
+            total += prod.quantity * prod.price
+        })
+        let tax = parseInt(total * 1.21)  
+    
+        return tax
+            
+        }
+
+    const getShipping = () => {
+
+        let total = 0
+        cartSaver.forEach(prod => {
+            total += prod.quantity * prod.price
+        })
+        let tax = parseInt(total * 1.21)
+        let ship = parseInt(tax * 0.05)  
+    
+        return ship
+            
+        }
 
     const isInCart = (id) => {
         return cartSaver.some(prod => prod.id === id )
@@ -102,6 +125,8 @@ export const CartContextProvider = ({children}) => {
             cartSaver,
             load,
             setLoad,
+            getPriceTax,
+            getShipping
             
 
         }}>
