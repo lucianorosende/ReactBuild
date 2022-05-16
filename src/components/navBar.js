@@ -31,6 +31,7 @@ const Nav = () => {
         
     }, [])
 
+
     return (
 
             <>
@@ -45,7 +46,7 @@ const Nav = () => {
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" id="navbarDropdown" href="$" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        {categories.map(cat => <Link key={cat.id} className="dropdown-item" to={`/category/${cat.id}`}>{cat.description}</Link>)}
+                                        {categories.map(cat => <Link key={cat.id} className="dropdown-item" to={`/categories/${cat.id}`}>{cat.description}</Link>)}
                                     </ul>
                                 </li>
                             </ul>

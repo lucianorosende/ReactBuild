@@ -7,7 +7,7 @@ export const productFetchByCategory = (categoryId) => {
     return new Promise((resolve, reject) => {
 
         const collectRef = categoryId ?
-                            query(collection(fireStoreDB, "productos"), where( "category", "==", categoryId)) :
+                            query(collection(fireStoreDB, "productos"), where( "categories", "==", categoryId)) :
                             collection(fireStoreDB, "productos")
 
         getDocs(collectRef).then(r => {

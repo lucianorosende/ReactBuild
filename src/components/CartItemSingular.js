@@ -19,7 +19,7 @@ const CartItemSingular = ({id, price, quantity, title, totalPrice, imgUrl, descr
             </div>
             <div className="product-price">{price}</div>
             <div className="product-quantity">
-            <input type="number" value={quantity} min="1"/>
+            <span className="btn btn-outline-dark mx-2">{quantity}</span> 
             </div>
             <div className="product-removal">
             <button className="remove-product" onClick={() => removeFromCart(id)}>

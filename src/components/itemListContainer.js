@@ -27,8 +27,6 @@ const Items = () => {
         return <LoadingAnimation></LoadingAnimation>
     }
 
-    
-
     return (
     <>
             
