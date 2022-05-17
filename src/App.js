@@ -9,11 +9,13 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import { CartContextProvider } from './context/CartContext';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
   return (
     <>
+    <ToastContainer limit={1}></ToastContainer>
     <CartContextProvider>
     <BrowserRouter>
     <DB/>

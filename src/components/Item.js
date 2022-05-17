@@ -1,21 +1,32 @@
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import CartContext from "../context/CartContext"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Item = ({id, title, description, price, imgUrl, stock, category}) => {
 
     const {addItem, isInCart} = useContext(CartContext)
 
 
-    
-
     const handler = () => {
+
+        toast.success(`Agregaste ${title} al carrito!`, {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            });
 
         const prodObj = {
             id, title, price, quantity: 1, imgUrl, description, totalPrice: price 
         }
         addItem(prodObj)
+
         
+
         }   
         
 
@@ -53,13 +64,17 @@ const Item = ({id, title, description, price, imgUrl, stock, category}) => {
                                     : 
                         isInCart(id) ? <Link key={id} className="btn btn-success mt-auto" to={"/cart"}>Ir al Carrito</Link> 
                                     :
-                                    <Link key={id} className="btn btn-success mt-auto" to={"/cart"} onClick={handler}><i className="bi-cart-fill me-1"></i>Añadir a Carrito</Link>
+                                
+                                    <button className="btn btn-success mt-auto" onClick={handler}><i className="bi-cart-fill me-1"></i>Añadir a Carrito</button>
+                
+                                   
                     }
                     
-
+                    
                     </div>
                 </div>
             </div>
+            
         </div>                      
     )
 

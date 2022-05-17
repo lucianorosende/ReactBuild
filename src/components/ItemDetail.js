@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartSuccess from "./CartSuccess";
 import CartContext from "../context/CartContext";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ItemDetail = ({imgUrl, descriptionLarge, title, price, id, stock, description}) => {
    
@@ -14,7 +16,17 @@ const ItemDetail = ({imgUrl, descriptionLarge, title, price, id, stock, descript
             id, title, description, imgUrl, price, quantity: quant, totalPrice : price * quant
         }
         addItem(prodObj)
-        }
+
+        toast.success(`Agregaste ${quant} ${title} al carrito!`, {
+            position: "top-right",
+            autoClose: 750,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            });
+
+    }
 
 
     return(
@@ -32,7 +44,10 @@ const ItemDetail = ({imgUrl, descriptionLarge, title, price, id, stock, descript
                             </div>
                             <p className="lead">{descriptionLarge}</p>
                             <div className="d-flex">
-                            {isInCart(id) ? <Link to="/cart"><CartSuccess/></Link> : <Counter initial={1} stock={stock} onAdd={addHandler}/>}
+                            {isInCart(id) ? <Link to="/cart"><CartSuccess/></Link> : 
+                                <>
+                                <Counter initial={1} stock={stock} onAdd={addHandler}/> 
+                                </>}
                             </div>
                         </div>
                     </div>

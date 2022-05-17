@@ -11,7 +11,7 @@ const Items = () => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const { categoryId } = useParams();
-    
+
 
     useAsyncHook(
         
