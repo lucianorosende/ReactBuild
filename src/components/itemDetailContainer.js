@@ -11,7 +11,6 @@ import CartContext from "../context/CartContext"
 const ItemDetailContainer = () => {
 
     const [pDetail, setpDetail] = useState()
-    // const [loading, setLoad] = useState(true)
     const {load, setLoad} = useContext(CartContext)
 
     const { productId } = useParams()
@@ -28,10 +27,10 @@ const ItemDetailContainer = () => {
             setLoad(false)
         })
         
-            // return(() => {
+        return(() => {
 
-            //     setpDetail()
-            // })
+            setpDetail()
+        })
 
     }, [productId]) //eslint-disable-line
 

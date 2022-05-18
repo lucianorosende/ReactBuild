@@ -12,12 +12,6 @@ const Nav = () => {
 
     useEffect(() => {
 
-        // catFetch().then(r => {
-
-        //     setCategories(r);
-
-        // })
-
         getDocs(collection(fireStoreDB, "categories")).then(r => {
 
             const categorieFetch = r.docs.map(doc => {

@@ -202,16 +202,6 @@ const Checkout = () => {
           </div>
         </div>
       </div> 
-
-
-
-    // <button onClick={() => {createOrder()}}>Generar orden</button>
-    // <form onSubmit={handleSubmit(onSubmit)}>
-    // <input  {...register("example", { required: true })} />
-    // <input {...register("exampleRequired", { required: true })} />
-    // {errors.exampleRequired && <span>This field is required</span>}
-    // <input type="submit" onClick={() => {createOrder()}}/>
-    // </form>
     )
 }
 
