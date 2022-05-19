@@ -35,22 +35,8 @@ const Cart = () => {
       <Link className="checkout" to={"/checkout"}>Checkout</Link>
       <button className="checkout me-2" onClick={() => cartClear()}>Limpiar Carrito</button>
 
-</div>
+        </div>
 
-
-
-
-            
-            {/* <h1>Cart</h1>
-            <ul>
-                {   
-                    
-                    cartSaver.map(prod => <li key={prod.id}>{prod.name}  cantidad: {prod.quantity} precio uni: {prod.price}  subtotal: {prod.quantity * prod.price} <button onClick={() => removeFromCart(prod.id)}>X</button></li>)
-                }  
-                <h5>total:{getPrice()}</h5>
-                <button onClick={() => cartClear()}>Limpiar Carrito</button>
-                <button onClick={() => createOrder()}>Generar Orden</button> 
-            </ul> */}
             </>
         )
     }
