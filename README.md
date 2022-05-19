@@ -40,7 +40,7 @@ npm start
 - Componente que se encarga del carrito en su totalidad, y CartContext.js que se encarga de su funcionalidad
 - SubComponentes:
 - CartLabels(solo diseño)
-- CartItem y CartItemSingular en el que mapea la info del cart y lo muestra en el html 
+- CartItem en el que mapea la info del cart y lo muestra en el html 
 - CartTotal que muestra el total del precio + envio e impuestos
 
 ![N|Solid](https://i.imgur.com/8BE4nsB.png)
