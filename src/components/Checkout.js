@@ -196,7 +196,7 @@ const Checkout = () => {
                 <b>{getQuant()}</b>
               </span>
             </h4>
-            {cartSaver.map(p => <p key={p.id}><button type="button" className="btn btn-outline-primary">{p.title}</button> <span className="price">${p.price}</span></p>)}
+            {cartSaver.map(p => <p key={p.id}><button type="button" className="btn btn-outline-primary">{p.title} ({p.quantity})</button> <span className="price">${p.totalPrice}</span></p>)}
             <hr/>
             <p>Total y envio <span className="price"><b>${getPriceTax() + getShipping()}</b></span></p>
           </div>

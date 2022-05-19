@@ -2,10 +2,10 @@ import { useContext } from "react"
 import CartContext from "./../context/CartContext"
 import CartAnimation from "./../services/animations/cartAnimation"
 import LoadingAnimation from "../services/animations/loader"
-import CartItem from "./CartItem"
 import CartLabels from "./CartLabels"
 import CartTotal from "./CartTotal"
 import { Link } from "react-router-dom"
+import CartItem from "./CartItem"
 
 const Cart = () => {
     
@@ -20,7 +20,6 @@ const Cart = () => {
             <CartAnimation></CartAnimation>
         )
     }
-    
    
         return (
             <>
@@ -28,7 +27,7 @@ const Cart = () => {
         <div className="shopping-cart">
 
             <CartLabels/>
-            <CartItem cartInfo={cartSaver} {...cartSaver} />
+            {cartSaver.map(p => <CartItem key={p.id} {...p}/>)}
             <CartTotal/>
 
   
