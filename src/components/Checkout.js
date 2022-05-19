@@ -18,8 +18,6 @@ const Checkout = () => {
 
     const { getPrice, cartSaver, setLoad, getQuant, getPriceTax, getShipping, load } = useContext(CartContext)
 
-    
-
     const CreateOrder = () => {
         setLoad(true)
 
@@ -96,6 +94,8 @@ const Checkout = () => {
                         icon: 'success',
                         confirmButtonText: 'Seguir Comprando'
                       })
+                    console.log("los datos de tu orden son:")
+                    console.log(dataSave)
                     }
                     
                 }).catch(e => {
