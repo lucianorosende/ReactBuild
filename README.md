@@ -58,10 +58,12 @@ npm start
 - Se encarga de mostar una animacion cuando no hay nada en el carrito
 
 ![N|Solid](https://i.imgur.com/BviQtRd.png)
-**LoadingAnimatn**
+
+**LoadingAnimation**
 - Se encarga de mostar una animacion de carga cuando hay una request de alguna DB o cuando algo esta cargando
 
 ![N|Solid](https://i.imgur.com/jLEVJyM.png)
+
 **ErrorAnimation**
 - Se encarga de mostar una animacion cuando un elemento no fue encontrado
 
